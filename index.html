@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", Arial, sans-serif;
+      background: #eef2f7;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .quote-box {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 34px;
+      box-shadow: 0 12px 30px rgba(31, 41, 55, 0.12);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 26px;
+      color: #2563eb;
+    }
+
+    .quote-mark {
+      font-size: 42px;
+      line-height: 1;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    #quote {
+      min-height: 96px;
+      font-size: 22px;
+      line-height: 1.6;
+      font-weight: 500;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    button {
+      margin-top: 30px;
+      border: 0;
+      border-radius: 6px;
+      background: #2563eb;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 24px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+
+      .quote-box {
+        padding: 26px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      #quote {
+        min-height: 120px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="quote-box" aria-labelledby="page-title">
+      <h1 id="page-title">Random Quote Generator</h1>
+      <div class="quote-mark">"</div>
+      <p id="quote">Click the button to get a motivational quote.</p>
+      <button id="new-quote" type="button">New Quote</button>
+    </section>
+  </main>
+
+  <script>
+    const quotes = [
+      "Believe you can and you're halfway there.",
+      "The best way to get started is to quit talking and begin doing.",
+      "Dream big and dare to fail.",
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Do something today that your future self will thank you for.",
+      "Your limitation is only your imagination.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Great things never come from comfort zones.",
+      "Time never waits, so use it wisely.",
+      "Small habits can create big results over time.",
+      "Water covers about 71 percent of the Earth's surface.",
+      "The human brain uses about 20 percent of the body's energy.",
+      "No one will build your future for you.",
+      "Discipline is stronger than motivation.",
+      "Your actions today decide your results tomorrow.",
+      "Excuses do not change anything, but effort can."
+    ];
+
+    const quoteText = document.getElementById("quote");
+    const newQuoteButton = document.getElementById("new-quote");
+
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const selectedQuote = quotes[randomIndex];
+
+      quoteText.classList.add("fade");
+
+      setTimeout(function () {
+        quoteText.textContent = selectedQuote;
+        quoteText.classList.remove("fade");
+      }, 250);
+    }
+
+    newQuoteButton.addEventListener("click", showRandomQuote);
+    showRandomQuote();
+  </script>
+</body>
+</html>
